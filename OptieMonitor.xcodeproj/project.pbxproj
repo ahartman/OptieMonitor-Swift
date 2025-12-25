@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		E802719B2EFBE90300251029 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		E83005292548066400B2CA56 /* OptieMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptieMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E83005292548066400B2CA56 /* OptieMonitor 11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OptieMonitor 11.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E830052C2548066400B2CA56 /* OptieMonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptieMonitorApp.swift; sourceTree = "<group>"; };
 		E83005332548066600B2CA56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E83005352548066600B2CA56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		E830052A2548066400B2CA56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E83005292548066400B2CA56 /* OptieMonitor.app */,
+				E83005292548066400B2CA56 /* OptieMonitor 11.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,7 +116,7 @@
 			packageProductDependencies = (
 			);
 			productName = OptieMonitor;
-			productReference = E83005292548066400B2CA56 /* OptieMonitor.app */;
+			productReference = E83005292548066400B2CA56 /* OptieMonitor 11.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -324,7 +324,7 @@
 				);
 				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahartman.OptieMonitor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) $(MARKETING_VERSION)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -354,7 +354,7 @@
 				);
 				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahartman.OptieMonitor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) $(MARKETING_VERSION)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

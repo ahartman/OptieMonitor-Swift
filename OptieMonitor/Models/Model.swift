@@ -23,11 +23,13 @@ enum orientations: String, CaseIterable {
 
 // set data path
 #if targetEnvironment(simulator)
-//let dataURL = "http://cake.local/orders.json?id=ahartman&action="
-let dataURL = "https://nastifou.synology.me:1010/orders.json?id=ahartman&action="
+    //let dataURL = "http://cake.local/orders.json?id=ahartman&action="
+    let dataURL =
+        "https://nastifou.synology.me:1010/orders.json?id=ahartman&action="
 #else
-//let dataURL = "http://cake.local/orders.json?id=ahartman&action="
-let dataURL = "https://nastifou.synology.me:1010/orders.json?id=ahartman&action="
+    //let dataURL = "http://cake.local/orders.json?id=ahartman&action="
+    let dataURL =
+        "https://nastifou.synology.me:1010/orders.json?id=ahartman&action="
 #endif
 
 // Incoming
@@ -157,14 +159,20 @@ extension Formatter {
 
 extension UIColor {
     class var omGreen: UIColor {
-        return UIColor(red: 81/255, green: 199/255, blue: 69/255, alpha: 1.0)
+        return UIColor(
+            red: 81 / 255,
+            green: 199 / 255,
+            blue: 69 / 255,
+            alpha: 1.0
+        )
     }
 }
 
 // Modifiers
 struct TextModifier: ViewModifier {
     func body(content: Content) -> some View {
-        return content
+        return
+            content
             .frame(minWidth: 0, maxWidth: .infinity)
             .font(.footnote)
     }
@@ -173,7 +181,8 @@ struct TextModifier: ViewModifier {
 struct StaleModifier: ViewModifier {
     var dataStale: Bool
     func body(content: Content) -> some View {
-        return content
+        return
+            content
             .frame(minWidth: 0, maxWidth: .infinity)
             .foregroundColor(dataStale ? .blue : .secondary)
             .font(.footnote.weight(dataStale ? .bold : .regular))

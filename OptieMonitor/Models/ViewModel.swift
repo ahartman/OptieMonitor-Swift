@@ -19,7 +19,7 @@ import SwiftUI
     var notificationSet = NotificationSetting()
     var message: String?
 
-    var expiries = [Expiries]() 
+    var expiries = [Expiries]()
     var expiry: Int?
     var currentOrientation: orientations?
 

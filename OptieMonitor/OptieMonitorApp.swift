@@ -38,28 +38,20 @@ struct OptieMonitorApp: App {
                 .environment(viewModel)
                 .onGeometryChange(for: CGSize.self) { proxy in
                     proxy.size
-                } action: { old, new in
+                } action: { oldSize, newSize in
                     viewModel.currentOrientation =
-                        new.width > new.height ? .landscape : .portrait
+                    newSize.width > newSize.height ? .landscape : .portrait
                 }
         }
-        .onChange(of: scenePhase) { old, phase in
-            if phase == .active {
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            if newPhase == .active {
                 Task {
                     await viewModel.getJsonData(action: "currentOrder")
                 }
             } else {
-                print("ScenePhase: \(phase)")
+                print("ScenePhase: \(newPhase)")
             }
         }
-    }
-}
-
-extension UIApplication {
-    static var appVersion: String? {
-        return Bundle.main.object(
-            forInfoDictionaryKey: "CFBundleShortVersionString"
-        ) as? String
     }
 }
 
