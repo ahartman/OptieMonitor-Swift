@@ -38,15 +38,6 @@ struct IntraChartView: View {
                 )
                 .foregroundStyle(by: .value("Type Color", element.type))
             }
-            /*
-            ForEach(viewModel.intraday.grafiekWaarden.filter { $0.type == "Index" }, id: \.self) { element in
-                LineMark(
-                    x: .value("Uur", element.datumTijd),
-                    y: .value("Index", element.waarde)
-                )
-                .foregroundStyle(by: .value("Type Color", element.type))
-            }
-             */
         }
         .padding(20)
         .background(.white)
@@ -64,12 +55,6 @@ struct IntraChartView: View {
                 AxisTick()
                 AxisValueLabel(format: .currency(code: "EUR").precision(.fractionLength(0)), centered: false)
             }
-            /*
-            AxisMarks(preset: .aligned, position: .trailing, values: viewModel.intraday.grafiekAssen["Index"] ?? [0.0]) { _ in
-                AxisTick()
-                AxisValueLabel()
-            }
-             */
         }
         .chartForegroundStyleScale(
             ["Call": .green, "Put": .purple /*, "Index": .blue */]

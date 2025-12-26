@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderView: View {
     @Environment(ViewModel.self) private var viewModel
-   var dataStale: Bool = false
+    var dataStale: Bool = false
 
     var body: some View {
         VStack {
@@ -19,24 +19,17 @@ struct HeaderView: View {
                     .padding(.bottom)
             }
             HStack {
-                Text("\(quoteDatetimeText)")
-                    .modifier(TextModifier())
-                Text("Call")
-                    .modifier(TextModifier())
-                if viewModel.currentOrientation == .landscape  {
-                    Text("∂")
-                        .modifier(TextModifier())
+                Text("\(quoteDatetimeText)").modifier(TextModifier())
+                Text("Call").modifier(TextModifier())
+                if viewModel.currentOrientation == .landscape {
+                    Text("∂").modifier(TextModifier())
                 }
-                Text("Put")
-                    .modifier(TextModifier())
-                if viewModel.currentOrientation == .landscape  {
-                   Text("∂")
-                        .modifier(TextModifier())
+                Text("Put").modifier(TextModifier())
+                if viewModel.currentOrientation == .landscape {
+                    Text("∂").modifier(TextModifier())
                 }
-                Text("€")
-                    .modifier(TextModifier())
-                Text("Index")
-                    .modifier(TextModifier())
+                Text("€").modifier(TextModifier())
+                Text("Index").modifier(TextModifier())
             }
         }
     }

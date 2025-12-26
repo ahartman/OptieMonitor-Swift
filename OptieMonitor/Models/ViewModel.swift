@@ -44,27 +44,47 @@ import SwiftUI
             let callValue = (line.callValue - firstCallValue) * line.nrContracts
             let putValue = (line.putValue - firstPutValue) * line.nrContracts
 
-            localGraphLines.append(
+            /*
+                         localGraphLines.append(
+                            GraphLine(
+                                datumTijd: line.datetime,
+                                type: "Call",
+                                waarde: callValue
+                            )
+                        )
+                        localGraphLines.append(
+                            GraphLine(
+                                datumTijd: line.datetime,
+                                type: "Put",
+                                waarde: putValue
+                            )
+                        )
+                        localGraphLines.append(
+                            GraphLine(
+                                datumTijd: line.datetime,
+                                type: "Index",
+                                waarde: Double(line.indexValue)
+                            )
+                        )
+            */
+
+            localGraphLines.append(contentsOf: [
                 GraphLine(
                     datumTijd: line.datetime,
                     type: "Call",
                     waarde: callValue
-                )
-            )
-            localGraphLines.append(
+                ),
                 GraphLine(
                     datumTijd: line.datetime,
                     type: "Put",
                     waarde: putValue
-                )
-            )
-            localGraphLines.append(
+                ),
                 GraphLine(
                     datumTijd: line.datetime,
                     type: "Index",
                     waarde: Double(line.indexValue)
-                )
-            )
+                ),
+            ])
             yMax = max(yMax, callValue, putValue, callValue + putValue)
             yMin = min(yMin, callValue, putValue, callValue + putValue)
         }
@@ -266,7 +286,6 @@ import SwiftUI
 
     func getJsonData(action: String) async {
         dataStale = true
-        print("datastale 1: \(dataStale)")
         isMessage = false
         let url = URL(string: dataURL + action)!
         let decoder = JSONDecoder()
@@ -282,7 +301,6 @@ import SwiftUI
                 print("Empty JSON fetch")
             }
             dataStale = false
-            print("datastale 2: \(dataStale)")
         } catch {
             print("Failed to fetch JSON")
         }

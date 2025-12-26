@@ -19,7 +19,7 @@ struct RowView: View {
             Text(line.callPriceText)
                 .modifier(TextModifier())
                 .foregroundColor(Color(line.warningColor))
-            if viewModel.currentOrientation == .landscape  {
+            if viewModel.currentOrientation == .landscape {
                 Text(line.callDeltaText)
                     .modifier(TextModifier())
                     .foregroundColor(Color(line.callDeltaColor))
@@ -27,7 +27,7 @@ struct RowView: View {
             Text(line.putPriceText)
                 .modifier(TextModifier())
                 .foregroundColor(Color(line.warningColor))
-            if viewModel.currentOrientation == .landscape  {
+            if viewModel.currentOrientation == .landscape {
                 Text(line.putDeltaText)
                     .modifier(TextModifier())
                     .foregroundColor(Color(line.putDeltaColor))
