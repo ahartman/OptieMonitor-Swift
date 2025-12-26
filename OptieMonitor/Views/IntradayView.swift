@@ -30,10 +30,8 @@ struct IntradayView: View {
             }
             .listStyle(GroupedListStyle())
             .environment(\.defaultMinListRowHeight, 10)
-            .navigationBarTitle(
-                "Intraday (\(UIApplication.appVersion!))",
-                displayMode: .inline
-            )
+            .navigationBarTitle("Intraday \(String(describing: version))", displayMode: .inline)
+
             .navigationBarItems(
                 leading:
                     Button(action: { showGraphSheet.toggle() }) {

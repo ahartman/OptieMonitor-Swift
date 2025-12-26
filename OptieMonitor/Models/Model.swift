@@ -17,6 +17,17 @@ var Ipad: Bool = UIDevice.current.userInterfaceIdiom == .pad
 let test: Bool = false
 let rowHeight: CGFloat = 5
 
+let version = getAppVersionAndBuild()
+
+func getAppVersionAndBuild() -> String {
+    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+        as? String
+    {
+        return (version)
+    }
+    return ("Unknown")
+}
+
 enum orientations: String, CaseIterable {
     case portrait, landscape, none
 }
