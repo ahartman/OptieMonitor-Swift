@@ -17,10 +17,10 @@ var Ipad: Bool = UIDevice.current.userInterfaceIdiom == .pad
 let test: Bool = false
 let rowHeight: CGFloat = 5
 
-let version = getAppVersionAndBuild()
+let version = getAppVersion()
 
-func getAppVersionAndBuild() -> String {
-    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+func getAppVersion() -> String {
+    if let version = Bundle.main.infoDictionary?["CFBundleVersion"]
         as? String
     {
         return (version)

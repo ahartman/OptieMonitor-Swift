@@ -13,7 +13,7 @@ struct IntraGraphView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        NavigationView {
+        //NavigationView {
             IntraChartView()
                 .padding(20.0)
                 .navigationBarTitle("Intraday waarde en index", displayMode: .inline)
@@ -21,7 +21,7 @@ struct IntraGraphView: View {
                     Button(action: { dismiss() })
                         { Image(systemName: "table") }
                 )
-        }
+        //}
     }
 }
 

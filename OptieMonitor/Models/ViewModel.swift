@@ -14,7 +14,7 @@ import SwiftUI
     var intradayGraph = [GraphLine]()
     var intradayIndex = [GraphLine]()
     var interdayGraph = [GraphLine]()
-    var isMessage: Bool = false
+    var showMessage: Bool = false
     var dataStale: Bool = true
     var notificationSet = NotificationSetting()
     var message: String?
@@ -278,7 +278,7 @@ import SwiftUI
         )
 
         message = result.message
-        if message != nil { isMessage = true }
+        if message != nil { showMessage = true }
         notificationSet = result.notificationSettings
         quoteDatetime = result.datetime
         quoteDatetimeText = formatDate(dateIn: result.datetime)
@@ -286,7 +286,7 @@ import SwiftUI
 
     func getJsonData(action: String) async {
         dataStale = true
-        isMessage = false
+        showMessage = false
         let url = URL(string: dataURL + action)!
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601

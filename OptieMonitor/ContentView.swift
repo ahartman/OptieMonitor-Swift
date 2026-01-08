@@ -1,4 +1,3 @@
-//
 //  ContentView.swift
 //  OptieMonitor
 //
@@ -9,41 +8,59 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(ViewModel.self) private var viewModel
+    @Environment(\.horizontalSizeClass) private var horizontalSize
 
     var body: some View {
         if viewModel.intraday.list.isEmpty {
             ContentUnavailableView(
-                "Nog geen gegevens beschikbaar",
-                systemImage: "icloud.and.arrow.down"
+                "Nog geen gegevens beschikbaar ...",
+                systemImage: "icloud.slash"
             )
         } else {
-            if Ipad {
-                IPadView(viewModel: viewModel)
-                    .environment(viewModel)
-            } else {
-                TabView {
-                    IntradayView(viewModel: viewModel)
-                        .tabItem {
-                            Image(systemName: "calendar.circle")
-                            Text("Intraday")
+            TabView {
+                let _ = print(
+                    "TabView: \(viewModel.intraday.list.isEmpty ? "empty" : "not empty")"
+                )
+                if horizontalSize == .regular {
+                    Tab("Overzicht", systemImage: "house") {
+                        IPadView(viewModel: viewModel)
+                            .environment(viewModel)
+                    }
+                    .customizationID("com.om.main")
+                } else {
+                    TabSection("iPhone") {
+                        Tab("Intraday", systemImage: "calendar.circle") {
+                            IntradayView(viewModel: viewModel)
                         }
-                    InterdayView()
-                        .tabItem {
-                            Image(systemName: "calendar.circle.fill")
-                            Text("Interday")
+                        .customizationID("com.om.intraday")
+
+                        Tab("Interday", systemImage: "calendar.circle.fill") {
+                            InterdayView()
                         }
-                    SettingsView(viewModel: viewModel)
-                        .tabItem {
-                            Image(systemName: "gear")
-                            Text("Notificaties")
-                        }
-                    NewOrderView(viewModel: viewModel)
-                        .tabItem {
-                            Image(systemName: "plus.circle")
-                            Text("Nieuw")
-                        }
+                        .customizationID("com.om.interday")
+                    }
                 }
-                .environment(viewModel)
+                TabSection {
+                    Tab(
+                        "Nieuwe Order",
+                        systemImage: "text.pad.header.badge.plus"
+                    ) {
+                        NewOrderView(viewModel: viewModel)
+                    }
+                    .customizationID("com.om.newOrder")
+                    Tab("Instellingen", systemImage: "gear") {
+                        SettingsView(viewModel: viewModel)
+                    }
+                    .customizationID("com.om.settings")
+                } header: {
+                    Label("Extra", systemImage: "folder")
+                }
+                .defaultVisibility(.hidden, for: .tabBar)
+            }
+            .tabViewStyle(.sidebarAdaptable)
+            .tabBarMinimizeBehavior(.onScrollDown)
+            .tabViewSidebarHeader {
+                Text("OptieMonitor \(version)")
             }
         }
     }

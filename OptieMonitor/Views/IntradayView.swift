@@ -9,10 +9,10 @@ import SwiftUI
 
 struct IntradayView: View {
     @Bindable var viewModel: ViewModel
-    @State private var showGraphSheet = false
+    @State var showGraphSheet = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section(
                     header: HeaderView(
@@ -30,7 +30,10 @@ struct IntradayView: View {
             }
             .listStyle(GroupedListStyle())
             .environment(\.defaultMinListRowHeight, 10)
-            .navigationBarTitle("Intraday \(String(describing: version))", displayMode: .inline)
+            .navigationBarTitle(
+                "Intraday \(String(describing: version))",
+                displayMode: .inline
+            )
 
             .navigationBarItems(
                 leading:
@@ -50,8 +53,9 @@ struct IntradayView: View {
             .refreshable {
                 await viewModel.getJsonData(action: "currentOrder")
             }
+            ButtonView(showGraphSheet: $showGraphSheet)
         }
-        .alert(isPresented: $viewModel.isMessage) {
+        .alert(isPresented: $viewModel.showMessage) {
             Alert(
                 title: Text("AEX"),
                 message: Text(viewModel.message ?? ""),
@@ -59,6 +63,7 @@ struct IntradayView: View {
             )
         }
         .sheet(isPresented: $showGraphSheet) {
+        } content: {
             IntraGraphView()
         }
     }
